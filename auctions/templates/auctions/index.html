@@ -2,6 +2,12 @@
 
 {% block body %}
     <h2>Active Listings</h2>
-
-    TODO
+    <div class="container-fluid "></div>
+    {% for listing in listings %} 
+        <p>{{listing.title}}</p>
+        <img src="{{listing.image.url}}" width="200px">
+        <p>{{listing.description}} </p>
+        <p>{{listing.price}} </p>
+        <p><a href="{% url 'listing' listing.id %}">View Item</a></p>
+    {% endfor %}
 {% endblock %}

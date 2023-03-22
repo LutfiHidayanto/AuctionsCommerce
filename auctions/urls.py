@@ -10,6 +10,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("createlisting/", views.create_listing, name="create-listing"),
+    path("listing/<int:listing_id>", views.listing, name="listing"),
     path("watchlist/", views.watchlist, name="watchlist"),
     path("categories/", views.category, name="category")
 ]

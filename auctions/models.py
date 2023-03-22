@@ -20,5 +20,10 @@ class Listing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True, related_name="user")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, related_name="category" )
 
+    active_status = models.BooleanField(null=True)
+
+    duration = models.IntegerField(default=1)
+
+
     def __str__(self):
         return f"{self.title} {self.owner}"
