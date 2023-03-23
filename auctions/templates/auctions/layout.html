@@ -8,15 +8,10 @@
         <link href="{% static 'auctions/css/styles.css' %}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1>Auctions</h1>
-        <div>
-            {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
-            {% else %}
-                Not signed in.
-            {% endif %}
-        </div>
-        <ul class="nav">
+        <ul class="nav .navbar-expand-xl|lg|md|sm py-1">
+            <li class="nav-item">
+                <a class="navbar-brand ml-3">Auctions</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
             </li>
@@ -42,6 +37,13 @@
                 </li>
             {% endif %}
         </ul>
+        <div class="ml-3">
+            {% if user.is_authenticated %}
+                Signed in as <strong>{{ user.username }}</strong>.
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
         <hr>
         {% block body %}
         {% endblock %}

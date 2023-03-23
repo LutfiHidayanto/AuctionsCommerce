@@ -1,3 +1,12 @@
 body {
-    padding: 10px;
+    margin: 0;
+    height: 100%;
+}
+
+ul {
+    background-color: #333333;
+}
+
+ul .nav-item a {
+    color: whitesmoke;
 }

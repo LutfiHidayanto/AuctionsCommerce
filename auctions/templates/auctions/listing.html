@@ -2,12 +2,23 @@
 
 {% block body %}
     <div>
-        <h3>{{listing.title}}</h3>
-        <img src="{{ listing.image.url }}" width="70%">
-        <div>
-            <form action="">
-                <input type="text">
-            </form>
+        <h3 class="text-center">{{listing.title}}</h3>
+        <div class="d-flex p-3">
+            <img src="{{ listing.image.url }}" width="45%" class="img-fluid">
+            <div class="pt-5">
+                <p>Desciption: {{listing.description}}</p>
+                <p>Price: {{listing.price}}</p>
+                <p>Category: {{listing.category}}</p>
+                {% if listing.active_status %}
+                    <p>Status: <span class="text-success">Active</span></p>
+                {% else %}
+                    <p>Status: <span class="text-danger">Closed</span></p>
+                {% endif %}
+                <p>Owner: <span class="text-primary">{{listing.owner}}</span></p>
+            </div>
         </div>
+        <form action="">
+            <input type="text">
+        </form>
     </div>
 {% endblock %}
