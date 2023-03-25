@@ -3,10 +3,28 @@ body {
     height: 100%;
 }
 
+
 ul {
-    background-color: #333333;
+    background-color: #2C3639;
 }
 
 ul .nav-item a {
     color: whitesmoke;
+}
+
+/* Index */
+
+.listing-container {
+    text-align: center;
+    flex: 1 1 0px;
+    border: 7px solid #DCD7C9;
+    background-color: #2C3639;
+}
+
+.listing-container * {
+    color: whitesmoke;
+}
+
+.category {
+    background-color: #3F4E4F;
 }

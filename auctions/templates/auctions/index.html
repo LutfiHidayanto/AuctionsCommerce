@@ -1,13 +1,18 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+    <h2 class="ml-3">Active Listings</h2>
     <div class="container-fluid "></div>
-    {% for listing in listings %} 
-        <p>{{listing.title}}</p>
-        <img src="{{listing.image.url}}" width="200px">
-        <p>{{listing.description}} </p>
-        <p>{{listing.price}} </p>
-        <p><a href="{% url 'listing' listing.id %}">View Item</a></p>
-    {% endfor %}
+        <div class="d-flex justify-content-center">
+        {% for listing in listings %} 
+            <div class="p-2 m-5 listing-container ">
+                <h5>{{listing.title}}</h5>
+                <div class="category">{{listing.category}} </div>
+                <img src="{{listing.image.url}}" width="200px" class="my-3 mx-auto d-block">
+                <p>{{listing.description}} </p>
+                <p>Price: {{listing.price}} </p>
+                <p><a href="{% url 'listing' listing.id %}">View Item</a></p>
+            </div>
+        {% endfor %}
+        </div>
 {% endblock %}
