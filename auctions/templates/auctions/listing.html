@@ -1,24 +1,43 @@
 {% extends 'auctions/layout.html' %}
 
+{% block title %}
+    {{title}}
+{% endblock %}
 {% block body %}
+{% include 'auctions/messages.html' %}
     <div>
         <h3 class="text-center">{{listing.title}}</h3>
         <div class="d-flex p-3">
             <img src="{{ listing.image.url }}" width="45%" class="img-fluid">
             <div class="pt-5">
                 <p>Desciption: {{listing.description}}</p>
-                <p>Price: {{listing.price}}</p>
+                <p>Bid Price: {{listing.price}}</p>
                 <p>Category: {{listing.category}}</p>
-                {% if listing.active_status %}
+                {% if listing.is_active %}
                     <p>Status: <span class="text-success">Active</span></p>
                 {% else %}
                     <p>Status: <span class="text-danger">Closed</span></p>
                 {% endif %}
                 <p>Owner: <span class="text-primary">{{listing.owner}}</span></p>
+                <p>Start Date: {{listing.start_date}}</p>
+                <p>End date: {{listing.start_date}}</p>
             </div>
         </div>
-        <form action="">
-            <input type="text">
-        </form>
+        {% if request.user.is_authenticated %}
+            <div class="my-3">  
+                <form action="{% url 'addtowatchlist' listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <input name="add" class="btn btn-primary" type="submit" value="Add to watchlist">
+                    <input name="remove" class="btn btn-danger" type="submit" value="Remove from watchlist">
+                </form>
+            </div>
+        {% endif %}
+        <div>
+            <form action="{% url 'bidding' listing.id %}" method="POST">
+                {% csrf_token %}
+                {{form}}
+                <input type="submit">
+            </form>
+        </div>
     </div>
 {% endblock %}
